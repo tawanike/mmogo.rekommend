@@ -28,7 +28,7 @@ HOST = socket.gethostname()
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-50u3zly$2z*0yvx@ts)q6*3+850gw91j6jij8gw4rj8k1l(ehn'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -248,7 +248,7 @@ CHANNEL_LAYERS = {
     },
 }
 
-SENDGRID_API_KEY = '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'
+SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY")
 SENDGRID_INVOICE_TEMPLATE_ID = 'd-06dac412a1914937b4a742fe263be834'
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
@@ -279,7 +279,7 @@ SIMPLE_JWT = {
 }
 
 PUSH_NOTIFICATION_SERVICE = 'expo'
-EXPO_ACCESS_TOKEN = 'hqCZvqoS0wEMUMrzuosGt7lA8rBYza8mUu4R9VLn'
+EXPO_ACCESS_TOKEN = os.getenv('EXPO_ACCESS_TOKEN')
 
 SLACK_WEBHOOK = ''
 SERVICE_FEE = 45.00

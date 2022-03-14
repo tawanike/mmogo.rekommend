@@ -31,7 +31,7 @@ coverage==5.3
 cryptography==3.4.7
 daphne==3.0.2
 distlib==0.3.1
-Django==2.2
+Django==3.2.6
 django-cors-headers==3.7.0
 django-countries==5.3.3
 django-filter==2.1.0

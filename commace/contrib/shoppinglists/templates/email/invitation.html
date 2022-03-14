@@ -1,0 +1,14 @@
+{% load i18n %}
+
+{% block html_body %}
+<h3>Hi {{ user.first_name }}</h3>
+
+<p>{% blocktrans %}<i>{{ user }}<i/> has invited you to contribute to a gift registry.{% endblocktrans %}</p>
+
+
+<p><a href="https://www.zowzow.co/registry/invite/{{ token }}">Accept Invitation</a></p>
+
+
+<p>{% blocktrans %}The ZowZow Baby team{% endblocktrans %}</p>
+
+{% endblock html_body %}

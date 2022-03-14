@@ -1,1 +1,0 @@
-Your eButler activation code is: {{ code }}. Don't share it with anyone.

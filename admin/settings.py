@@ -56,31 +56,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'storages',
 
-    'altur.sms',
-    'altur.push',
-    'altur.email',
-
-    
-    'commace.stores',
-    'commace.products',
-    'commace.payments',
-    'commace.contrib.cart',
-    'commace.contrib.brands',
-    'commace.contrib.promocodes',
-    'commace.contrib.shoppinglists',
-    
-
-    'mmogo.profiles',
-    'mmogo.contrib.links',
-    'mmogo.contrib.devices',
-    'mmogo.contrib.events',
-    'mmogo.contrib.banners',
-    'mmogo.contrib.addresses',
-    'mmogo.contrib.locations',
-    'mmogo.contrib.activities',
-    'mmogo.contrib.categories',
-    'mmogo.contrib.invitations',
-    'mmogo.contrib.medialibrary',
+    'recommend',
 ]
 
 MIDDLEWARE = [
@@ -182,20 +158,7 @@ AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
 AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_STORAGE_BUCKET_NAME")
 AWS_DEFAULT_REGION = os.environ.get("AWS_DEFAULT_REGION")
 
-# CELERY STUFF
-CELERY_RESULT_BACKEND = os.environ.get("REDIS_URL")
 
-CELERY_ACCEPT_CONTENT = ['application/json']
-CELERY_TASK_SERIALIZER = 'json'
-CELERY_RESULT_SERIALIZER = 'json'
-CELERY_TIMEZONE = 'Africa/Johannesburg'
-BROKER_URL = f'sqs://{AWS_ACCESS_KEY_ID}:{AWS_SECRET_ACCESS_KEY}@sqs.af-south-1.amazonaws.com/677760231496/celery'
-
-BROKER_TRANSPORT_OPTIONS = {'region': AWS_DEFAULT_REGION}
-
-INTERNAL_IPS = [
-    '127.0.0.1',
-]
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
@@ -233,20 +196,6 @@ AWS_HEADERS = {
 
 CLOUDFRONT_DOMAIN = ''
 CLOUDFRONT_ID = ''
-
-# AWS_QUERYSTRING_AUTH = False
-# AWS_S3_CUSTOM_DOMAIN = CLOUDFRONT_DOMAIN
-# AWS_CLOUDFRONT_DOMAIN = 'd1wzpxdhx5pce6.cloudfront.net/'
-
-TWILIO_NUMBER = os.environ.get("TWILIO_NUMBER")
-TWILIO_AUTH_TOKEN = os.environ.get("AWS_STORAGE_BUCKET_NAME")
-TWILIO_ACCOUNT_SID = os.environ.get("AWS_STORAGE_BUCKET_NAME")
-
-CHANNEL_LAYERS = {
-    'default': {
-        "BACKEND": "channels.layers.InMemoryChannelLayer"
-    },
-}
 
 SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY")
 SENDGRID_INVOICE_TEMPLATE_ID = 'd-06dac412a1914937b4a742fe263be834'

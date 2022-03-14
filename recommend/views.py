@@ -15,7 +15,7 @@ class RecommendAPIView(APIView):
         response = requests.get('https://api.zowzow.co/v1/dresses')
         print(response.status_code)
         if response.status_code < 400:
-            for dress in response.json():
+            for dress in response.json().get('results'):
                 data.append({
                     'id': str(dress.get('_id')),
                     'title': dress.get('title'),

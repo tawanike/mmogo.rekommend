@@ -1,3 +1,4 @@
+from ntpath import join
 import random
 import requests
 from rest_framework import status
@@ -11,13 +12,11 @@ class RecommendAPIView(APIView):
     def post(self, request):
         data = []
         recommended = []
-
         response = requests.get('https://api.zowzow.co/v1/dresses')
-        print(response.status_code)
         if response.status_code < 400:
             for dress in response.json().get('results'):
                 data.append({
-                    'id': str(dress.get('_id')),
+                    'id': str(dress.get('id')),
                     'title': dress.get('title'),
                     'designer': dress.get('designer'),
                     'description': dress.get('description'),
@@ -42,10 +41,12 @@ class RecommendAPIView(APIView):
                 sort_order = False
             
             recommendations = recommend.get_recommendations(request.data.get('item'), sort_order)
-            response = requests.post('https://api.zowzow.co/v1/dresses/recommendations', json=recommendations)
-            for item in response.json():
+            recommendations_id = ",".join(recommendations)
+            response = requests.get(F'https://api.zowzow.co/v1/dresses/recommendations?id={recommendations_id}')
+            
+            for item in response.json().get('results'):
                 recommended.append({
-                    'id': str(item.get('_id')),
+                    'id': str(item.get('id')),
                     'title': item.get('title'),
                     'designer': item.get('designer'),
                     'description': item.get('description'),

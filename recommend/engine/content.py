@@ -12,7 +12,7 @@ class ContentBasedEngine:
         self.count_matrix = self.count.fit_transform(self.df['soup'])
 
     def get_recommendations(self, item, sort_order):
-        cosine_sim = cosine_similarity(self.count_matrix, self.count_matrix)
+        cosine_sim = cosine_similarity(self.count_matrix)
         indices = pd.Series(self.df.index, index=self.df['id'])
 
         idx = indices.get(item)
